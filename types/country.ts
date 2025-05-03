@@ -6,6 +6,8 @@ export interface Country {
     capital: string;
     flags: { png: string };
     cca3: string;
+    area:number;
+    gini: string;
   }
   
  

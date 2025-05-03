@@ -16,5 +16,7 @@ export async function fetchCountryByCode(code: string): Promise<Country | null> 
     capital: data[0].capital?.[0] ?? "N/A",
     flags: { png: data[0].flags.png },
     cca3: data[0].cca3,
+    area: data[0].area,
+    gini: data[0].gini ? data[0].gini : "N/A",
   };
 }

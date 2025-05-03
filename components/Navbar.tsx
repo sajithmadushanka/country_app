@@ -3,6 +3,7 @@
 
 import { useEffect, useState } from "react";
 import { Moon, Sun } from "lucide-react";
+import Link from "next/link";
 
 export default function Navbar() {
   const [darkMode, setDarkMode] = useState(false);
@@ -21,6 +22,13 @@ export default function Navbar() {
       }}
     >
       <h1 className="text-xl font-bold">REST Countries</h1>
+      <Link href="/" className="text-sm text-[var(--color-muted)]">
+        Home
+      </Link>
+
+      <Link href="/compare" className="text-sm text-[var(--color-muted)]">
+        Compare
+      </Link>
       <button
         onClick={() => setDarkMode(!darkMode)}
         className="flex items-center gap-2"
