@@ -8,7 +8,6 @@ import { fetchRegionByName } from "@/services/fetchByRegion";
 import { Region } from "@/types/region";
 import ComparisonCharts from "@/components/ComparisonCharts";
 import RegionComparisonCharts from "@/components/RegionComparisonCharts";
-import Navbar from "@/components/Navbar";
 
 export default function ComparePage() {
   const [activeTab, setActiveTab] = useState<"country" | "region">("country");
@@ -54,7 +53,7 @@ export default function ComparePage() {
       return (
         <div
           key={idx}
-          className="bg-white  dark:bg-[var(--color-dark-secondary)] text-[var(--color-foreground)] dark:text-[var(--color-foreground)]  border border-dashed p-6 rounded-lg text-center"
+          className="bg-[var(--color-background)] text-[var(--color-foreground)] border border-dashed p-6 rounded-lg text-center"
         >
           {idx === 0 ? "First entry missing" : "Second entry missing"}
         </div>
@@ -66,7 +65,7 @@ export default function ComparePage() {
       return (
         <div
           key={idx}
-          className="bg-white dark:bg-[var(--color-dark-secondary)]  shadow-[var(--shadow-card)] p-6 rounded-xl"
+          className="bg-[var(--color-background)] text-[var(--color-foreground)] shadow-[var(--shadow-card)] p-6 rounded-xl"
         >
           <div className="flex items-center gap-4 mb-4">
             <img
@@ -103,7 +102,7 @@ export default function ComparePage() {
       return (
         <div
           key={idx}
-          className="bg-white dark:bg-[var(--color-dark-secondary)] shadow-[var(--shadow-card)] p-6 rounded-xl"
+          className="bg-[var(--color-background)] text-[var(--color-foreground)] shadow-[var(--shadow-card)] p-6 rounded-xl"
         >
           <h2 className="text-xl font-semibold mb-4">{data.name}</h2>
           <ul className="text-sm space-y-1">
@@ -125,8 +124,6 @@ export default function ComparePage() {
 
   return (
     <div className="min-h-screen bg-[var(--color-background)] text-[var(--color-foreground)]">
-      <Navbar />
-
       <div className="max-w-5xl mx-auto px-4 py-8">
         <h1 className="text-3xl font-bold mb-6 text-center">
           Compare Dashboard
@@ -139,7 +136,7 @@ export default function ComparePage() {
             className={`px-4 py-2 rounded-l-md font-medium ${
               activeTab === "country"
                 ? "bg-blue-600 text-white"
-                : "bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-300"
+                : "bg-[var(--color-background)] text-[var(--color-foreground)] border border-[var(--color-foreground)]"
             }`}
           >
             Country Compare
@@ -149,7 +146,7 @@ export default function ComparePage() {
             className={`px-4 py-2 rounded-r-md font-medium ${
               activeTab === "region"
                 ? "bg-blue-600 text-white"
-                : "bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-300"
+                : "bg-[var(--color-background)] text-[var(--color-foreground)] border border-[var(--color-foreground)]"
             }`}
           >
             Region Compare
@@ -163,14 +160,14 @@ export default function ComparePage() {
             placeholder={`First ${activeTab} name`}
             value={query1}
             onChange={(e) => setQuery1(e.target.value)}
-            className="w-full pl-10 pr-4 py-2 rounded-md bg-[var(--color-background)] text-[var(--color-foreground)] shadow-card"
+            className="w-full p-3 rounded-md bg-[var(--color-background)] text-[var(--color-foreground)] border border-[var(--color-foreground)]"
           />
           <input
             type="text"
             placeholder={`Second ${activeTab} name`}
             value={query2}
             onChange={(e) => setQuery2(e.target.value)}
-            className="w-full pl-10 pr-4 py-2 rounded-md bg-[var(--color-background)] text-[var(--color-foreground)] shadow-card"
+            className="w-full p-3 rounded-md bg-[var(--color-background)] text-[var(--color-foreground)] border border-[var(--color-foreground)]"
           />
         </div>
 

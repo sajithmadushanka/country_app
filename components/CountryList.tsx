@@ -1,13 +1,5 @@
 import CountryCard from "./CountryCard";
-
-interface Country {
-  name: string;
-  population: number;
-  region: string;
-  capital: string;
-  flags: { png: string };
-  cca3: string;
-}
+import { Country } from "@/types/country";
 
 export default function CountryList({ countries }: { countries: Country[] }) {
   return (
@@ -15,12 +7,7 @@ export default function CountryList({ countries }: { countries: Country[] }) {
       {countries.map((country) => (
         <CountryCard
           key={country.cca3}
-          code={country.cca3}
-          flag={country.flags.png}
-          name={country.name}
-          population={country.population}
-          region={country.region}
-          capital={country.capital}
+          country={country}
         />
       ))}
     </div>

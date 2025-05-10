@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Navbar from "../components/Navbar";
 import SearchBar from "../components/SearchBar";
 import FilterDropdown from "../components/FilterDropdown";
 import CountryList from "../components/CountryList";
@@ -30,7 +29,6 @@ export default function HomePage() {
         }
         setLoading(false);
       })
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       .catch((err) => {
         setError("Failed to load countries.");
         setLoading(false);
@@ -55,7 +53,6 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-[var(--color-background)] text-[var(--color-foreground)]">
-      <Navbar />
       <div className="container mx-auto px-4 py-6">
         <div className="flex flex-col sm:flex-row justify-between items-center mb-6">
           <SearchBar onSearch={setSearch} />
