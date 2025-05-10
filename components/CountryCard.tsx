@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
 import { useState } from "react";
@@ -5,11 +6,7 @@ import { useRouter } from "next/navigation";
 import { CountryCardProps } from "@/types/CountryCardProps";
 import Image from "next/image";
 import Link from 'next/link'
-import { Country } from '@/types/country'
 
-interface CountryCardProps {
-  country: Country
-}
 
 export default function CountryCard({ country }: CountryCardProps) {
   const router = useRouter();
@@ -22,7 +19,7 @@ export default function CountryCard({ country }: CountryCardProps) {
 
   return (
     <Link href={`/country/${country.cca3}`}>
-      <div className="bg-white dark:bg-dark-elements rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
         <div className="relative h-48 w-full">
           <Image
             src={country.flags.png}
@@ -31,7 +28,7 @@ export default function CountryCard({ country }: CountryCardProps) {
             className="object-cover"
           />
         </div>
-        <div className="p-6">
+        <div className="p-6 text-gray-900 dark:text-white">
           <h2 className="text-xl font-bold mb-4">{country.name.common}</h2>
           <div className="space-y-2">
             <p>

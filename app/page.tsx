@@ -29,7 +29,7 @@ export default function HomePage() {
         }
         setLoading(false);
       })
-      .catch((err) => {
+      .catch(() => {
         setError("Failed to load countries.");
         setLoading(false);
       });
@@ -40,7 +40,7 @@ export default function HomePage() {
 
     if (search) {
       filteredData = filteredData.filter((c) =>
-        c.name.toLowerCase().includes(search.toLowerCase())
+        c.name.common.toLowerCase().includes(search.toLowerCase())
       );
     }
 

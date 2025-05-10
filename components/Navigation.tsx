@@ -1,9 +1,10 @@
-'use client';
+/* eslint-disable @typescript-eslint/no-unused-expressions */
+"use client";
 
-import { useSession, signOut } from 'next-auth/react';
-import Link from 'next/link';
-import { Moon, Sun } from 'lucide-react';
-import { useEffect, useState } from 'react';
+import { useSession, signOut } from "next-auth/react";
+import Link from "next/link";
+import { Moon, Sun } from "lucide-react";
+import { useEffect, useState } from "react";
 
 export default function Navigation() {
   const { data: session, status } = useSession();
@@ -20,7 +21,10 @@ export default function Navigation() {
         <div className="flex justify-between h-16">
           <div className="flex">
             <div className="flex-shrink-0 flex items-center">
-              <Link href="/" className="text-xl font-bold text-[var(--color-foreground)]">
+              <Link
+                href="/"
+                className="text-xl font-bold text-[var(--color-foreground)]"
+              >
                 Countries App
               </Link>
             </div>
@@ -45,15 +49,19 @@ export default function Navigation() {
               className="flex items-center gap-2 text-[var(--color-foreground)]"
             >
               {darkMode ? <Sun size={18} /> : <Moon size={18} />}
-              <span className="text-sm">{darkMode ? "Light" : "Dark"} Mode</span>
+              <span className="text-sm">
+                {darkMode ? "Light" : "Dark"} Mode
+              </span>
             </button>
-            {status === 'loading' ? (
+            {status === "loading" ? (
               <div className="text-[var(--color-foreground)]">Loading...</div>
             ) : session ? (
               <div className="flex items-center space-x-4">
-                <span className="text-[var(--color-foreground)]">Welcome, {session.user?.name || 'User'}</span>
+                <span className="text-[var(--color-foreground)]">
+                  Welcome, {session.user?.name || "User"}
+                </span>
                 <button
-                  onClick={() => signOut({ callbackUrl: '/auth/signin' })}
+                  onClick={() => signOut({ callbackUrl: "/auth/signin" })}
                   className="bg-red-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-red-700"
                 >
                   Sign out
@@ -72,4 +80,4 @@ export default function Navigation() {
       </div>
     </nav>
   );
-} 
+}

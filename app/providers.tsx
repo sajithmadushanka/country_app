@@ -1,5 +1,5 @@
 'use client';
-import NextAuth from "next-auth"
+
 import { SessionProvider } from 'next-auth/react';
 import type { Session } from 'next-auth';
 

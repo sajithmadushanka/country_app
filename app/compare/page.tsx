@@ -70,10 +70,10 @@ export default function ComparePage() {
           <div className="flex items-center gap-4 mb-4">
             <img
               src={data.flags.png}
-              alt={data.name}
+              alt={data.name.common}
               className="w-12 h-8 object-cover rounded"
             />
-            <h2 className="text-xl font-semibold">{data.name}</h2>
+            <h2 className="text-xl font-semibold">{data.name.common}</h2>
           </div>
           <ul className="text-sm space-y-1">
             <li>

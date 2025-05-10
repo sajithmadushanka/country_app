@@ -12,7 +12,7 @@ export default function ComparisonSearch({ countries, onSelect1, onSelect2 }: Pr
   const [query2, setQuery2] = useState("");
 
   const handleSelect = (query: string, set: (c: Country) => void) => {
-    const match = countries.find(c => c.name.toLowerCase() === query.toLowerCase());
+    const match = countries.find(c => c.name.common.toLowerCase() === query.toLowerCase());
     if (match) set(match);
   };
 

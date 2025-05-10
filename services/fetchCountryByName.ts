@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Country } from "@/types/country";
 
 export async function fetchCountryByName(name: string): Promise<Country | null> {
@@ -13,6 +14,12 @@ export async function fetchCountryByName(name: string): Promise<Country | null> 
         flags: { png: data[0].flags.png },
         cca3: data[0].cca3,
         area: data[0].area,
-        gini: data[0].gini ? data[0].gini : "N/A",
+        gini: data[0].gini ? String(Object.values(data[0].gini)[0]) : "N/A",
+        nativeName: (Object.values(data[0].name.nativeName || {})[0] as any)?.common || "N/A",
+        subregion: data[0].subregion || "N/A",
+        topLevelDomain: data[0].tld?.[0] || "N/A",
+        currencies: data[0].currencies ? Object.values(data[0].currencies).map((curr: any) => ({ name: curr.name })) : [{ name: "N/A" }],
+        languages: data[0].languages ? Object.values(data[0].languages).map((lang: any) => ({ name: lang })) : [{ name: "N/A" }],
+        borders: data[0].borders || [],
     };
   }

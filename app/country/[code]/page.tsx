@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
 import { useEffect, useState } from "react";
@@ -6,6 +7,22 @@ import { Country } from "@/types/country";
 import { fetchCountryByCode } from "@/services/fetchCountryByCode";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
+import Image from 'next/image';
+
+// async function getCountry(code: string) {
+//   const url = `https://restcountries.com/v3.1/alpha/${code}`;
+//   try {
+//     const response = await fetch(url);
+//     if (!response.ok) {
+//       throw new Error('Failed to fetch country data');
+//     }
+//     const data = await response.json();
+//     return data[0];
+//   } catch (error) {
+//     console.error('Error fetching country:', error);
+//     return null;
+//   }
+// }
 
 export default function CountryPage() {
   const { code } = useParams();
@@ -75,11 +92,12 @@ export default function CountryPage() {
         </Link>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          <div className="relative aspect-[4/3]">
-            <img
+          <div className="relative w-full h-64">
+            <Image
               src={country.flags.png}
-              alt={country.flags.alt || `${country.name} flag`}
-              className="w-full h-full object-cover rounded-md shadow-md"
+              alt={country.flags.alt || `${country.name.common} flag`}
+              fill
+              className="object-cover"
             />
           </div>
 
