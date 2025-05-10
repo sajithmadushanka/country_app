@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 import { getToken } from 'next-auth/jwt';
+import NextAuth from "next-auth";
+import Credentials from "next-auth/providers/credentials";
 
 export async function middleware(request: NextRequest) {
   const token = await getToken({ req: request });
@@ -39,3 +41,41 @@ export const config = {
     '/((?!api/auth|_next/static|_next/image|favicon.ico).*)',
   ],
 };
+
+export const { auth, signIn, signOut } = NextAuth({
+  providers: [
+    Credentials({
+      credentials: {
+        username: { label: "Username", type: "text" },
+        password: { label: "Password", type: "password" }
+      },
+      async authorize(credentials) {
+        if (credentials?.username === "User" && credentials?.password === "password") {
+          return {
+            id: "1",
+            name: "User",
+            email: "user@example.com",
+          };
+        }
+        return null;
+      },
+    }),
+  ],
+  pages: {
+    signIn: "/auth/signin",
+  },
+  callbacks: {
+    async jwt({ token, user }) {
+      if (user) {
+        token.id = user.id;
+      }
+      return token;
+    },
+    async session({ session, token }) {
+      if (session.user) {
+        session.user.id = token.id as string;
+      }
+      return session;
+    },
+  },
+});

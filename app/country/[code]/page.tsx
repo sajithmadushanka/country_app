@@ -6,7 +6,6 @@ import { Country } from "@/types/country";
 import { fetchCountryByCode } from "@/services/fetchCountryByCode";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
-import Image from "next/image";
 
 export default function CountryPage() {
   const { code } = useParams();
@@ -76,13 +75,11 @@ export default function CountryPage() {
         </Link>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          <div>
-            <Image
-              src={country.flags.svg}
-              alt={country.flags.alt || `${country.name.common} flag`}
-              width={500}
-              height={300}
-              className="rounded-lg shadow-lg"
+          <div className="relative aspect-[4/3]">
+            <img
+              src={country.flags.png}
+              alt={country.flags.alt || `${country.name} flag`}
+              className="w-full h-full object-cover rounded-md shadow-md"
             />
           </div>
 
